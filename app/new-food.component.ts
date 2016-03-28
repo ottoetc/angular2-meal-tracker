@@ -5,7 +5,7 @@ import { Food } from './food.model';
   selector: 'new-food',
   outputs: ['onSubmitNewFood'],
   template: `
-    <h3>Blank template</h3>
+    <h3>Add a Food you ate!</h3>
     <input placeholder="Name" #newName>
     <input placeholder="Calories" #newCalories>
     <input placeholder="Description" #newDescription>
