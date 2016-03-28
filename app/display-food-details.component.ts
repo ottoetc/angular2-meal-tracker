@@ -2,12 +2,13 @@ import { Component } from 'angular2/core';
 import { Food } from './food.model';
 
 @Component({
-  selector: 'food-display',
+  selector: 'display-food-details',
   inputs: ['food'],
   template: `
-    <h3>{{ food.name }}</h3>
+    <h5>{{ food.calories }}</h5>
+    <h5>{{ food.description }}</h5>
   `
 })
-export class FoodComponent {
+export class DisplayFoodDetailsComponent {
   public food: Food;
 }

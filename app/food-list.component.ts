@@ -2,18 +2,25 @@ import { Component, EventEmitter } from 'angular2/core';
 import { FoodComponent } from './food.component';
 import { Food } from './food.model';
 import { EditFoodDetailsComponent } from './edit-food-details.component';
+import { DisplayFoodDetailsComponent } from './display-food-details.component';
 import { NewFoodComponent } from './new-food.component';
 
 @Component({
   selector: 'food-list',
   inputs: ['foodList'],
   outputs: ['onFoodClick'],
-  directives: [FoodComponent, EditFoodDetailsComponent, NewFoodComponent],
+  directives: [FoodComponent, EditFoodDetailsComponent, DisplayFoodDetailsComponent, NewFoodComponent],
   template: `
-    <food-display *ngFor="#currentFood of foodList" (click)="foodClicked(currentFood)" [class.selected]="currentFood === selectedFood" [food]="currentFood">
-    </food-display>
-    <edit-food-details *ngIf="selectedFood" [food]="selectedFood">
-    </edit-food-details>
+    <div *ngFor="#currentFood of foodList">
+      <food-display (click)="foodClicked(currentFood)" [class.selected]="currentFood === selectedFood" [food]="currentFood">
+      </food-display>
+      <display-food-details *ngIf="currentFood === selectedFood" [food]="selectedFood">
+      </display-food-details>
+      <edit-food-details *ngIf="currentFood === selectedFood" [food]="selectedFood">
+      </edit-food-details>
+
+    </div>
+
     <new-food (onSubmitNewFood)="createFood($event)"></new-food>
   `
 })
